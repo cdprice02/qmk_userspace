@@ -10,12 +10,17 @@ enum sofle_layers {
     _FUNCTIONS,
 };
 
-enum custom_keycodes { KC_PRVWD = QK_USER, KC_NXTWD, KC_LSTRT, KC_LEND, LE_LEFT, LE_RGHT, RE_LEFT, RE_RGHT };
+enum custom_keycodes { KC_PRVWD = QK_USER, KC_NXTWD, KC_LSTRT, KC_LEND, EN_CCW1, EN_CW1, EN_CCW2, EN_CW2 };
 
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [0] = {ENCODER_CCW_CW(LE_LEFT, LE_RGHT)},
-    [1] = {ENCODER_CCW_CW(RE_LEFT, RE_RGHT)},
+    // clang-format off
+    [_DEFAULT] = {ENCODER_CCW_CW(EN_CCW1, EN_CW1)},
+    [_NUMBERS] = {ENCODER_CCW_CW(EN_CCW2, EN_CW2)},
+    [_NAVIGATION] = {ENCODER_CCW_CW(EN_CCW2, EN_CW2)},
+    [_SYMBOLS] = {ENCODER_CCW_CW(EN_CCW2, EN_CW2)},
+    [_FUNCTIONS] = {ENCODER_CCW_CW(EN_CCW2, EN_CW2)},
+    // clang-format on
 };
 #endif
 
@@ -53,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_NAVIGATION] = LAYOUT(_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, XXXXXXX, KC_NXTWD, XXXXXXX, XXXXXXX, XXXXXXX, KC_COPY, KC_UNDO, XXXXXXX, XXXXXXX, KC_PSTE, XXXXXXX, _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, XXXXXXX, XXXXXXX, _______, XXXXXXX, KC_CUT, XXXXXXX, XXXXXXX, KC_PRVWD, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______),
     /*
-     * FUNCTION
+     * FUNCTIONS
      * ,-----------------------------------------.                    ,-----------------------------------------.
      * |  `   |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  `   |
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -67,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *            |      |      |      |      |/       /         \      \ |      |      |      |      |
      *            `----------------------------------'           '------''---------------------------'
      */
-    [_FUNCTION] = LAYOUT(_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LNUM, KC_F1, KC_F2, KC_F3, KC_F4, XXXXXXX, _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, KC_LCAP, KC_F5, KC_F6, KC_F7, KC_F8, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, KC_LSCR, KC_F9, KC_F10, KC_F11, KC_F12, XXXXXXX, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______),
+    [_FUNCTIONS] = LAYOUT(_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LNUM, KC_F1, KC_F2, KC_F3, KC_F4, XXXXXXX, _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, KC_LCAP, KC_F5, KC_F6, KC_F7, KC_F8, XXXXXXX, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, KC_LSCR, KC_F9, KC_F10, KC_F11, KC_F12, XXXXXXX, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______),
     /*
      * SYMBOLS
      * ,-----------------------------------------.                    ,-----------------------------------------.
@@ -99,7 +104,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *            |      |      |      |      |/       /         \      \ |      |      |      |      |
      *            `----------------------------------'           '------''---------------------------'
      */
-    [_NUMBERS] = LAYOUT(_______, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______, _______, XXXXXXX, KC_7, KC_8, KC_9, KC_MINS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, KC_4, KC_5, KC_6, KC_EQL, XXXXXXX, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI, XXXXXXX, _______, XXXXXXX, KC_1, KC_2, KC_3, KC_BSLS, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, LT(_NAVIGATION, KC_0), _______, _______, _______, _______, _______, _______)};
+    [_NUMBERS] = LAYOUT(_______, KC_EXLM, KC_AT, KC_HASH, KC_DLR, KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______, _______, XXXXXXX, KC_7, KC_8, KC_9, KC_MINS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, XXXXXXX, KC_4, KC_5, KC_6, KC_EQL, XXXXXXX, KC_RSFT, KC_RCTL, KC_RALT, KC_RGUI, XXXXXXX, _______, XXXXXXX, KC_1, KC_2, KC_3, KC_BSLS, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, _______, _______, LT(_NAVIGATION, KC_0), _______, _______, _______, _______, _______, _______),
+};
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -177,22 +183,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             break;
-        case LE_LEFT:
+        case EN_CCW1:
             if (record->event.pressed) {
                 tap_code(KC_VOLU);
             }
             break;
-        case LE_RGHT:
+        case EN_CW1:
             if (record->event.pressed) {
                 tap_code(KC_VOLD);
             }
             break;
-        case RE_LEFT:
+        case EN_CCW2:
             if (record->event.pressed) {
                 tap_code(KC_PGDN);
             }
             break;
-        case RE_RGHT:
+        case EN_CW2:
             if (record->event.pressed) {
                 tap_code(KC_PGUP);
             }
