@@ -6,10 +6,10 @@
 #define TAPPING_TERM_PER_KEY
 #ifdef TAPPING_TERM
 #    undef TAPPING_TERM
-#    define TAPPING_TERM 200
 #endif
+#define TAPPING_TERM 200
 
 #ifdef ENCODER_RESOLUTION
 #    undef ENCODER_RESOLUTION
-#    define ENCODER_RESOLUTION 4
 #endif
+#define ENCODER_RESOLUTION 4

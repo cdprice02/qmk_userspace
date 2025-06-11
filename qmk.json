@@ -3,10 +3,7 @@
     "build_targets": [
         [
             "sofle/rev1",
-            "cdprice02",
-            {
-                "CONVERT_TO": "ELITE_PI"
-            }
+            "cdprice02"
         ]
     ]
 }
