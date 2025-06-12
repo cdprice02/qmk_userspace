@@ -3,6 +3,8 @@
 
 #pragma once
 
+#define SPLIT_USB_DETECT
+
 #define TAPPING_TERM_PER_KEY
 #ifdef TAPPING_TERM
 #    undef TAPPING_TERM
