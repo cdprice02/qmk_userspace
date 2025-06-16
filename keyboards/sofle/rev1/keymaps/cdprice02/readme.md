@@ -17,6 +17,7 @@ Layout in [Keyboard Layout Editor](https://www.keyboard-layout-editor.com/#/gist
 ## Features
 
 - Homerow modifiers (CMD/Super, Alt/Opt, Ctrl, Shift)
+- Vim-like bindings
 - Various modes - can be switched by thumb keys (Base, Navigation, Functions, Symbols, Numbers)
 - Modes for Mac vs Linux/Win support -> different order of modifiers and different action
 - Display shows selected mode and state of lock keys (num, caps, and scroll lock)
