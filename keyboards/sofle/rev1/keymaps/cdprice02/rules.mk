@@ -1,3 +1,5 @@
+CONVERT_TO = elite_pi
+
 MAGIC_ENABLE = no
 ENCODER_MAP_ENABLE = yes
 EXTRA_KEY_ENABLE = yes
