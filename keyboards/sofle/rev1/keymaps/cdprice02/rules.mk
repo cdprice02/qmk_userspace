@@ -1,4 +1,4 @@
-CONVERT_TO = elite_pi
+CONVERT_TO = rp2040_ce
 
 MAGIC_ENABLE = no
 ENCODER_MAP_ENABLE = yes
